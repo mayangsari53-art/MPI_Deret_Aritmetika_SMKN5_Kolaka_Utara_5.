@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b63">
+<title>MPI Matematika | Deret Aritmetika & Geometri</title>
+<style>
+:root{--navy:#123b63;--blue:#1769aa;--cyan:#16b8a6;--gold:#ffc857;--ink:#172b4d;--muted:#60738b;--paper:#f4f8fc;--white:#fff;--line:#dce6f0;--green:#16845b;--red:#c83d4d}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+button,input{font:inherit}button{cursor:pointer;border:0;border-radius:13px;padding:12px 17px;font-weight:750;transition:.15s}button:focus-visible,input:focus-visible{outline:3px solid #f5bd43;outline-offset:2px}
+.primary{background:var(--blue);color:white}.secondary{background:#e6f1fb;color:var(--navy)}.accent{background:var(--gold);color:#392c08}.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}button:hover{filter:brightness(.96);transform:translateY(-1px)}
+header{background:linear-gradient(120deg,#123b63,#1769aa);color:white;padding:18px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;background:#fff2c9;color:var(--navy);display:grid;place-items:center;font-size:25px;font-weight:900}.brand h1{font-size:clamp(16px,2vw,21px);margin:0}.brand p{margin:2px 0 0;color:#d8eafb;font-size:13px}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}.top-actions button{padding:9px 12px}
+main{max-width:1120px;margin:0 auto;padding:clamp(16px,4vw,38px)}.hero{background:linear-gradient(135deg,#123b63,#1769aa 70%,#16b8a6);border-radius:26px;color:white;padding:clamp(25px,5vw,54px);display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;box-shadow:0 15px 35px #123b6320}
+.hero h2{font-size:clamp(28px,4vw,46px);line-height:1.1;margin:12px 0}.hero p{color:#e4f2ff;max-width:650px}.pill{display:inline-block;background:#ffffff20;border:1px solid #ffffff40;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.06em}.math-art{font-size:clamp(44px,7vw,84px);font-weight:900;text-align:center;line-height:1.3;color:#ffe18b;text-shadow:0 4px 0 #0c2e50}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .secondary{background:#fff;color:var(--navy)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 14px;flex-wrap:wrap}.section-head h2{margin:0;font-size:24px}.section-head p{margin:3px 0 0;color:var(--muted)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.menu-card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;text-align:left;min-height:155px;box-shadow:0 6px 18px #123b6308}.menu-card .emoji{font-size:31px}.menu-card h3{margin:8px 0 3px}.menu-card p{font-size:13px;color:var(--muted);margin:0}
+.content{margin-top:20px}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:clamp(18px,3vw,30px);box-shadow:0 8px 24px #123b6309}.panel h2{margin-top:0}.subnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.subnav button{padding:9px 13px}.subnav button.active{background:var(--navy);color:white}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}.concept{border:1px solid var(--line);border-radius:17px;padding:20px;background:#fbfdff}.concept h3{margin:0 0 8px}.formula{background:#eaf4ff;border-radius:12px;padding:13px;text-align:center;font-size:clamp(18px,2.5vw,24px);font-weight:800;color:var(--navy);margin:12px 0}.muted{color:var(--muted)}.small{font-size:13px}.example{background:#fff7df;border:1px solid #f4dfa0;border-radius:14px;padding:15px;margin-top:12px}
+.callout{border-left:4px solid var(--cyan);background:#e9fbf7;padding:13px 16px;border-radius:0 12px 12px 0;margin:15px 0}
+.sim-tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}.sim-tabs button{flex:1;min-width:160px}.scenario{background:#f5faff;border:1px solid var(--line);border-radius:17px;padding:20px}.big-sequence{font-size:clamp(22px,3.2vw,34px);font-weight:850;letter-spacing:.03em;text-align:center;color:var(--navy);margin:14px 0}.answer-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.answer-row label{font-weight:700}.answer-row input{width:125px;border:1px solid #c8d6e5;border-radius:11px;padding:11px;background:white}.feedback{padding:12px 14px;border-radius:12px;margin-top:13px}.feedback.good{background:#e7f8ef;color:#126340}.feedback.bad{background:#fff0f0;color:#a52231}
+.quiz-progress{height:8px;background:#e5edf5;border-radius:999px;overflow:hidden;margin:12px 0 20px}.quiz-progress div{height:100%;background:var(--cyan);width:0;transition:width .25s}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:17px 0}.option{background:#f4f8fc;color:var(--ink);border:2px solid var(--line);text-align:left}.option.selected{border-color:var(--blue);background:#eaf4ff}.option.correct{border-color:var(--green);background:#e7f8ef}.option.wrong{border-color:var(--red);background:#fff0f0}.scorebox{display:flex;gap:12px;flex-wrap:wrap;margin:15px 0}.score-chip{background:#edf5fc;border-radius:12px;padding:10px 14px;font-weight:800}.footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 15px}.hidden{display:none!important}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.math-art{display:none}.menu-grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.options{grid-template-columns:1fr}.brand p{max-width:230px}}
+@media(max-width:420px){.menu-grid{grid-template-columns:1fr 1fr}.menu-card{padding:14px;min-height:140px}header{align-items:flex-start}.top-actions{width:100%}}
+@media print{header,.top-actions,.hero-buttons,.menu-grid,.subnav,.footer,button{display:none!important}body{background:white}.panel,.concept{box-shadow:none;break-inside:avoid}main{max-width:none;padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">∑</div><div><h1>MPI Matematika</h1><p>SMKN 5 Kolaka Utara · Kelas X</p></div></div>
+  <div class="top-actions"><button class="secondary" onclick="showPage('home')">⌂ Beranda</button><button class="secondary" id="soundBtn" onclick="toggleSound()">🔊 Suara: Mati</button></div>
+</header>
+<main>
+<section id="home" class="page">
+  <div class="hero">
+    <div><span class="pill">MEDIA PEMBELAJARAN INTERAKTIF</span><h2>Jelajahi Pola,<br>Temukan Jumlahnya!</h2><p>Belajar jumlah <i>n</i> suku pertama deret aritmetika dan geometri melalui materi ringkas, simulasi kehidupan sehari-hari, dan kuis interaktif.</p><div class="hero-buttons"><button class="accent" onclick="showPage('materi');beep()">Mulai Belajar →</button><button class="secondary" onclick="showPage('simulasi')">Coba Simulasi</button></div></div>
+    <div class="math-art" aria-hidden="true">2, 4, 8…<br>∑ Sₙ<br><span style="color:#fff;font-size:.56em">Pola jadi solusi!</span></div>
+  </div>
+  <div class="section-head"><div><h2>Menu Pembelajaran</h2><p>Pilih aktivitas yang ingin kamu lakukan.</p></div></div>
+  <div class="menu-grid">
+    <button class="menu-card" onclick="showPage('materi')"><span class="emoji">📘</span><h3>Materi</h3><p>Konsep, rumus, dan contoh.</p></button>
+    <button class="menu-card" onclick="showPage('simulasi')"><span class="emoji">🧩</span><h3>Simulasi</h3><p>Temukan pola dari cerita nyata.</p></button>
+    <button class="menu-card" onclick="showPage('kuis')"><span class="emoji">🏆</span><h3>Kuis</h3><p>Uji pemahamanmu, raih 30 poin.</p></button>
+    <button class="menu-card" onclick="showPage('profil')"><span class="emoji">👩‍🏫</span><h3>Profil</h3><p>Informasi dan petunjuk aplikasi.</p></button>
+  </div>
+  <div class="callout"><b>Tujuan belajar:</b> membedakan deret aritmetika dan geometri, menghitung jumlah <i>n</i> suku pertama, serta menerapkannya dalam masalah sehari-hari.</div>
+</section>
+
+<section id="materi" class="page hidden content">
+  <div class="panel">
+    <div class="section-head"><div><h2>📘 Materi Pembelajaran</h2><p>Pahami pola sebelum memilih rumus.</p></div><button class="ghost" onclick="showPage('home')">← Menu</button></div>
+    <div class="subnav"><button id="tabA" class="active" onclick="setMaterial('a')">Deret Aritmetika</button><button id="tabG" onclick="setMaterial('g')">Deret Geometri</button></div>
+    <div id="materialA">
+      <div class="concept"><h3>Deret Aritmetika</h3><p>Deret aritmetika adalah penjumlahan suku-suku barisan yang memiliki <b>beda tetap</b>.</p><div class="big-sequence">2 + 5 + 8 + 11 + 14</div><p>Bedanya selalu 3: 5 − 2 = 3, 8 − 5 = 3, dan seterusnya.</p><div class="formula">Sₙ = n/2 [2a + (n − 1)b]</div><div class="formula">Sₙ = n/2 (a + Uₙ)</div><p class="small muted"><b>Keterangan:</b> Sₙ = jumlah n suku pertama; a = suku pertama; b = beda; n = banyak suku; Uₙ = suku ke-n.</p></div>
+      <div class="example"><b>Contoh:</b> Hitung 2 + 5 + 8 + 11 + 14.<br>a = 2, b = 3, n = 5.<br>S₅ = 5/2 [2(2) + (5 − 1)3] = 5/2 (16) = <b>40</b>.</div>
+    </div>
+    <div id="materialG" class="hidden">
+      <div class="concept"><h3>Deret Geometri</h3><p>Deret geometri adalah penjumlahan suku-suku barisan yang memiliki <b>rasio tetap</b>.</p><div class="big-sequence">3 + 6 + 12 + 24</div><p>Rasionya selalu 2: 6 ÷ 3 = 2, 12 ÷ 6 = 2, dan seterusnya.</p><div class="formula">Sₙ = a(rⁿ − 1)/(r − 1), r ≠ 1</div><div class="formula">Sₙ = a(1 − rⁿ)/(1 − r), r ≠ 1</div><p class="small muted"><b>Keterangan:</b> a = suku pertama; r = rasio; n = banyak suku. Jika r = 1, Sₙ = na.</p></div>
+      <div class="example"><b>Contoh:</b> Hitung 3 + 6 + 12 + 24.<br>a = 3, r = 2, n = 4.<br>S₄ = 3(2⁴ − 1)/(2 − 1) = 3 × 15 = <b>45</b>.</div>
+    </div>
+    <div class="callout"><b>Ingat!</b> Aritmetika: selisih/beda tetap. Geometri: perbandingan/rasio tetap.</div>
+    <button class="primary" onclick="showPage('simulasi')">Lanjut ke Simulasi →</button>
+  </div>
+</section>
+
+<section id="simulasi" class="page hidden content">
+  <div class="panel">
+    <div class="section-head"><div><h2>🧩 Simulasi Pola dalam Kehidupan</h2><p>Pilih skenario, tentukan jenis deret, lalu hitung totalnya.</p></div><button class="ghost" onclick="showPage('home')">← Menu</button></div>
+    <div class="sim-tabs"><button id="scenarioK" class="primary" onclick="setScenario('kursi')">🪑 Skenario A: Kursi Aula</button><button id="scenarioP" class="secondary" onclick="setScenario('produksi')">🧰 Skenario B: Produksi</button></div>
+    <div id="scenarioText" class="scenario"></div>
+    <div class="cols" style="margin-top:15px">
+      <div class="concept"><h3>1. Pilih jenis deret</h3><div class="subnav"><button id="pickA" class="secondary" onclick="pickSeries('a')">Aritmetika</button><button id="pickG" class="secondary" onclick="pickSeries('g')">Geometri</button></div><p id="typeFeedback" class="muted small">Pilih jenis deret berdasarkan pola angka.</p></div>
+      <div class="concept"><h3>2. Hitung jumlah suku</h3><p id="calcHint">Masukkan jumlah total berdasarkan cerita.</p><div class="answer-row"><label for="simAnswer">Jawaban:</label><input id="simAnswer" type="number" inputmode="numeric" placeholder="Total"><button class="primary" onclick="checkSimulation()">Periksa</button></div><div id="simFeedback" aria-live="polite"></div></div>
+    </div>
+    <div class="scorebox"><div class="score-chip">Skor simulasi: <span id="simScore">0</span>/20</div><div class="score-chip">Skenario selesai: <span id="simDone">0</span>/2</div></div>
+    <div class="callout"><b>Tantangan berpikir kritis:</b> Jelaskan mengapa kamu memilih jenis deret tersebut. Jika jumlah peserta aula 200 orang, apakah kursinya cukup? Berikan alasan menggunakan hasil perhitungan.</div>
+    <button class="primary" onclick="showPage('kuis')">Lanjut ke Kuis →</button>
+  </div>
+</section>
+
+<section id="kuis" class="page hidden content">
+  <div class="panel">
+    <div class="section-head"><div><h2>🏆 Kuis Interaktif</h2><p>Jawab 3 soal. Setiap jawaban benar bernilai 10 poin.</p></div><button class="ghost" onclick="showPage('home')">← Menu</button></div>
+    <div class="scorebox"><div class="score-chip">Skor: <span id="quizScore">0</span>/30</div><div class="score-chip">Soal: <span id="questionNum">1</span>/3</div></div>
+    <div class="quiz-progress"><div id="progressBar"></div></div>
+    <div id="quizArea"></div>
+    <div id="quizControls" class="answer-row"><button id="checkQuiz" class="primary" onclick="checkQuizAnswer()" disabled>Periksa Jawaban</button><button id="nextQuiz" class="accent hidden" onclick="nextQuestion()">Soal Berikutnya →</button></div>
+    <div id="quizResult" class="hidden"></div>
+    <button class="secondary hidden" id="retryQuiz" onclick="resetQuiz()">↻ Main Lagi</button>
+  </div>
+</section>
+
+<section id="profil" class="page hidden content">
+  <div class="panel">
+    <div class="section-head"><div><h2>👩‍🏫 Profil & Petunjuk</h2><p>Informasi penggunaan media pembelajaran.</p></div><button class="ghost" onclick="showPage('home')">← Menu</button></div>
+    <div class="concept"><h3>MPI Matematika — SMKN 5 Kolaka Utara</h3><p><b>Materi:</b> Jumlah n suku pertama deret aritmetika dan geometri.</p><p><b>Sasaran:</b> Peserta didik kelas X SMK.</p><p><b>Cara menggunakan:</b></p><ol><li>Buka menu Materi untuk membaca konsep dan rumus.</li><li>Pilih Simulasi untuk menyelesaikan masalah kontekstual.</li><li>Kerjakan Kuis dan baca pembahasan setiap soal.</li><li>Gunakan tombol Beranda untuk berpindah menu.</li></ol><p class="muted small">Media ini berjalan di browser dan tidak memerlukan internet setelah file tersimpan di perangkat. Skor kuis dihitung selama sesi berjalan.</p></div>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><button class="primary" onclick="window.print()">Cetak Materi</button><button class="secondary" onclick="showPage('materi')">Mulai dari Materi</button></div>
+  </div>
+</section>
+</main>
+<footer class="footer">MPI Matematika · Deret Aritmetika dan Geometri · Belajar aktif, berpikir kritis, dan teliti.</footer>
+<script>
+const pages=['home','materi','simulasi','kuis','profil'];
+function showPage(id){pages.forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id));window.scrollTo({top:0,behavior:'smooth'});if(id==='kuis'&&!quizStarted){renderQuestion();quizStarted=true;}}
+let soundOn=false;
+function toggleSound(){soundOn=!soundOn;document.getElementById('soundBtn').textContent=soundOn?'🔊 Suara: Nyala':'🔊 Suara: Mati';if(soundOn)beep();}
+function beep(){if(!soundOn)return;try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=660;g.gain.value=.035;o.start();o.stop(ctx.currentTime+.09);}catch(e){}}
+function setMaterial(type){document.getElementById('materialA').classList.toggle('hidden',type!=='a');document.getElementById('materialG').classList.toggle('hidden',type!=='g');document.getElementById('tabA').classList.toggle('active',type==='a');document.getElementById('tabG').classList.toggle('active',type==='g');beep();}
+const scenarios={
+ kursi:{title:'🪑 Susunan kursi aula',desc:'Baris pertama aula berisi 12 kursi. Setiap baris berikutnya bertambah 3 kursi. Ada 5 baris.',seq:'12, 15, 18, 21, 24',type:'a',total:90,hint:'S₅ = 5/2 [2(12) + (5 − 1)3]. Berapa total kursi?',why:'Jumlah kursi bertambah dengan beda tetap 3, jadi deret aritmetika.'},
+ produksi:{title:'🧰 Produksi suvenir',desc:'Pada tahap pertama dibuat 2 suvenir. Setiap tahap berikutnya jumlahnya menjadi dua kali tahap sebelumnya. Ada 5 tahap.',seq:'2, 4, 8, 16, 32',type:'g',total:62,hint:'S₅ = 2(2⁵ − 1)/(2 − 1). Berapa total suvenir?',why:'Jumlah produksi dikalikan 2 pada setiap tahap, jadi deret geometri.'}
+};
+let currentScenario='kursi',pickedType='',simPoints=0,simFinished={kursi:false,produksi:false};
+function setScenario(key){currentScenario=key;pickedType='';document.getElementById('scenarioK').className=key==='kursi'?'primary':'secondary';document.getElementById('scenarioP').className=key==='produksi'?'primary':'secondary';document.getElementById('simAnswer').value='';document.getElementById('simFeedback').innerHTML='';document.getElementById('typeFeedback').textContent='Pilih jenis deret berdasarkan pola angka.';document.getElementById('pickA').className='secondary';document.getElementById('pickG').className='secondary';renderScenario();}
+function renderScenario(){const s=scenarios[currentScenario];document.getElementById('scenarioText').innerHTML=`<h3>${s.title}</h3><p>${s.desc}</p><div class="big-sequence">${s.seq}</div><p class="muted small">Amati apakah selisih atau rasio antar suku selalu sama.</p>`;document.getElementById('calcHint').textContent=s.hint;}
+function pickSeries(t){pickedType=t;document.getElementById('pickA').className=t==='a'?'primary':'secondary';document.getElementById('pickG').className=t==='g'?'primary':'secondary';const s=scenarios[currentScenario];document.getElementById('typeFeedback').textContent=t===s.type?'Tepat! '+s.why:'Coba amati kembali perubahan dari satu suku ke suku berikutnya.';beep();}
+function checkSimulation(){const s=scenarios[currentScenario],val=Number(document.getElementById('simAnswer').value),box=document.getElementById('simFeedback');if(!pickedType){box.innerHTML='<div class="feedback bad">Pilih jenis deret terlebih dahulu.</div>';return;}if(pickedType!==s.type){box.innerHTML='<div class="feedback bad">Jenis deret belum tepat. Periksa beda atau rasionya, lalu coba lagi.</div>';return;}if(val!==s.total){box.innerHTML='<div class="feedback bad">Belum tepat. Gunakan rumus jumlah n suku pertama dan periksa kembali perhitunganmu.</div>';return;}if(!simFinished[currentScenario]){simFinished[currentScenario]=true;simPoints+=10;}box.innerHTML=`<div class="feedback good"><b>Benar!</b> ${s.why}<br>Jumlah keseluruhan = <b>${s.total}</b>. ${currentScenario==='kursi'?'Jika ada 200 peserta, 90 kursi belum cukup.':'Total produksi selama 5 tahap adalah 62 suvenir.'}</div>`;document.getElementById('simScore').textContent=simPoints;document.getElementById('simDone').textContent=Object.values(simFinished).filter(Boolean).length;beep();}
+const questions=[
+ {q:'Barisan memiliki suku pertama 5 dan beda 3. Berapa jumlah 10 suku pertama?',opts:['140','175','185','200'],correct:2,explain:'S₁₀ = 10/2 [2(5) + 9(3)] = 5 × 37 = 185.'},
+ {q:'Berapakah jumlah deret geometri 2 + 6 + 18 + 54?',opts:['72','78','80','81'],correct:2,explain:'Jumlah langsung: 2 + 6 + 18 + 54 = 80. Rasionya 3.'},
+ {q:'Bengkel membuat 4 komponen pada hari pertama, lalu jumlahnya bertambah 2 komponen setiap hari. Berapa total selama 5 hari?',opts:['35 komponen','38 komponen','40 komponen','42 komponen'],correct:2,explain:'Pola: 4, 6, 8, 10, 12. Jumlahnya 40 komponen.'}
+];
+let quizStarted=false,qIndex=0,selected=-1,checked=false,quizPoints=0,scored=[false,false,false];
+function renderQuestion(){const q=questions[qIndex];selected=-1;checked=false;document.getElementById('questionNum').textContent=qIndex+1;document.getElementById('progressBar').style.width=(qIndex/questions.length*100)+'%';document.getElementById('quizScore').textContent=quizPoints;document.getElementById('quizResult').classList.add('hidden');document.getElementById('retryQuiz').classList.add('hidden');document.getElementById('quizControls').classList.remove('hidden');document.getElementById('checkQuiz').classList.remove('hidden');document.getElementById('checkQuiz').disabled=true;document.getElementById('nextQuiz').classList.add('hidden');document.getElementById('quizArea').innerHTML=`<h3>${q.q}</h3><div class="options">${q.opts.map((o,i)=>`<button class="option" data-i="${i}" onclick="selectOption(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div><div id="quizFeedback" aria-live="polite"></div>`;}
+function selectOption(i){if(checked)return;selected=i;document.querySelectorAll('.option').forEach((b,j)=>b.classList.toggle('selected',j===i));document.getElementById('checkQuiz').disabled=false;beep();}
+function checkQuizAnswer(){if(selected<0||checked)return;checked=true;const q=questions[qIndex],correct=selected===q.correct;if(correct&&!scored[qIndex]){quizPoints+=10;scored[qIndex]=true;}document.querySelectorAll('.option').forEach((b,j)=>{b.disabled=true;if(j===q.correct)b.classList.add('correct');else if(j===selected)b.classList.add('wrong');});document.getElementById('quizScore').textContent=quizPoints;document.getElementById('quizFeedback').innerHTML=`<div class="feedback ${correct?'good':'bad'}"><b>${correct?'Benar! +10 poin':'Belum tepat.'}</b> ${q.explain}</div>`;document.getElementById('checkQuiz').classList.add('hidden');document.getElementById('nextQuiz').classList.remove('hidden');document.getElementById('nextQuiz').textContent=qIndex===questions.length-1?'Lihat Hasil':'Soal Berikutnya →';document.getElementById('progressBar').style.width=((qIndex+1)/questions.length*100)+'%';beep();}
+function nextQuestion(){if(qIndex<questions.length-1){qIndex++;renderQuestion();}else{document.getElementById('quizControls').classList.add('hidden');document.getElementById('quizArea').innerHTML='';const msg=quizPoints===30?'Luar biasa! Semua jawaban benar.':quizPoints===20?'Bagus! Ulangi bagian yang masih keliru.':quizPoints===10?'Terus berlatih. Baca kembali pembahasan soal.':'Ayo pelajari kembali materi lalu coba lagi.';document.getElementById('quizResult').innerHTML=`<div class="concept" style="text-align:center"><div style="font-size:48px">🏆</div><h2>Kuis Selesai!</h2><div class="big-sequence">${quizPoints}/30</div><p>${msg}</p><p class="muted">Skor: ${quizPoints/30*100} dari 100 jika dikonversi ke skala nilai.</p><button class="primary" onclick="showPage('materi')">Pelajari Materi Lagi</button></div>`;document.getElementById('quizResult').classList.remove('hidden');document.getElementById('retryQuiz').classList.remove('hidden');}}
+function resetQuiz(){qIndex=0;selected=-1;checked=false;quizPoints=0;scored=[false,false,false];quizStarted=true;renderQuestion();}
+renderScenario();
+</script>
+</body>
+</html>
