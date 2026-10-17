@@ -1,0 +1,2 @@
+# MPI_Deret_Aritmetika_SMKN5_Kolaka_Utara_5.
+MPI_Deret_Aritmetika_SMKN5_Kolaka_Utara_5.
